@@ -1,0 +1,31 @@
+:root{
+  --bg: #000;
+  --accent-blue: #1E90FF;
+  --accent-neon: #39FF14;
+  --text-main: #FFFFFF;
+  --text-muted: #D3D3D3;
+  --card-bg: #0b0b0b;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-main);
+  font-family: 'Roboto', sans-serif;
+}
+
+.site-title { font-family: 'Orbitron', sans-serif; letter-spacing: 0.5px; }
+.text-accent { color: var(--accent-neon); }
+h1, h2, h3 { font-family: 'Orbitron', sans-serif; color: var(--accent-blue); }
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.btn-primary {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+}
+.btn-outline-light { border-color: rgba(255,255,255,0.12); }
+footer { border-top: 1px solid rgba(255,255,255,0.04); }
+
+.badge.bg-success { background: var(--accent-neon) !important; color: #000; }

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Level-Up Gamer</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-dark text-white">
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/logo.png" alt="Level-Up Logo" width="36" class="me-2">
+          <span class="site-title">Level-Up Gamer</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+            <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito <span id="cart-badge" class="badge bg-success ms-1">0</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="registro.html">Registro</a></li>
+          </ul>
+          <form class="d-flex" role="search" id="searchForm">
+            <input id="searchInput" class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Buscar">
+            <button class="btn btn-outline-light" type="submit">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main class="container my-4">
+    <section class="row align-items-center">
+      <div class="col-md-7">
+        <h1 class="display-5">Bienvenido a <span class="text-accent">Level-Up Gamer</span></h1>
+        <p class="lead text-muted">Tu tienda online en Chile con todo para gamers: consolas, accesorios, sillas y más.</p>
+        <p>
+          <a href="productos.html" class="btn btn-primary btn-lg me-2">Ver catálogo</a>
+          <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#registroModal">Registrarse</button>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <!-- Video embebido de ejemplo -->
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/3t-6qAQH_bQ" title="Video LevelUp" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Productos destacados -->
+    <section class="my-5">
+      <h2 class="h4 mb-3">Productos destacados</h2>
+      <div id="featured-products" class="row g-3">
+        <!-- Se llenará desde js/main.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-black text-muted py-4 mt-auto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5 class="text-white">Level-Up Gamer</h5>
+          <p>Despachos a todo Chile. Atención por WhatsApp: +56 9 1234 5678</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p>© <span id="year"></span> Level-Up Gamer</p>
+          <small>Política de privacidad · Términos</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal de registro simple -->
+  <div class="modal fade" id="registroModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="form-registro" class="modal-content bg-dark text-white needs-validation" novalidate>
+        <div class="modal-header">
+          <h5 class="modal-title">Registro</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre completo</label>
+            <input id="nombre" name="nombre" class="form-control" required autocomplete="name">
+            <div class="invalid-feedback">Ingresa tu nombre.</div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input id="email" name="email" type="email" class="form-control" required autocomplete="email">
+            <div class="invalid-feedback" id="emailFeedback">Ingresa un correo válido.</div>
+          </div>
+          <div class="mb-3">
+            <label for="edad" class="form-label">Edad</label>
+            <input id="edad" name="edad" type="number" min="1" class="form-control" required>
+            <div class="invalid-feedback" id="edadFeedback">Debes ser mayor de 18 años para registrarte.</div>
+          </div>
+          <div id="registroMessage" class="small text-success d-none">Registro correcto.</div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Crear cuenta</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!-- dentro de carrito.html -->
+<main class="container my-4">
+  <h2>Tu carrito</h2>
+  <div id="cart-list"></div>
+  <div class="mt-3">
+    <h4>Total: <span id="cart-total">--</span></h4>
+    <a href="index.html" class="btn btn-secondary">Seguir comprando</a>
+    <button id="btnCheckout" class="btn btn-primary">Pagar</button>
+  </div>
+</main>
+<script>
+  // pequeño script inline o en un archivo separado
+  const CART_KEY = 'levelup_cart';
+  const cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+  const container = document.getElementById('cart-list');
+  const totalEl = document.getElementById('cart-total');
+
+  function renderCart(){
+    if(cart.length===0){ container.innerHTML = '<p>Tu carrito está vacío.</p>'; totalEl.textContent = formatCLP(0); return; }
+    container.innerHTML = cart.map(item => `
+      <div class="card mb-2 p-2">
+        <div class="d-flex justify-content-between">
+          <div>
+            <strong>${item.name}</strong><br><small>${item.qty} x ${formatCLP(item.price)}</small>
+          </div>
+          <div>
+            <button class="btn btn-sm btn-outline-light remove-item" data-id="${item.id}">Eliminar</button>
+          </div>
+        </div>
+      </div>`).join('');
+    const total = cart.reduce((s,i)=>s+i.qty*i.price,0);
+    totalEl.textContent = formatCLP(total);
+  }
+
+  // delegación para eliminar
+  document.addEventListener('click', (e)=>{
+    if(e.target.matches('.remove-item')){
+      const id = e.target.dataset.id;
+      const idx = cart.findIndex(i=>i.id===id);
+      if(idx>=0){ cart.splice(idx,1); localStorage.setItem(CART_KEY, JSON.stringify(cart)); renderCart(); updateCartBadge(); }
+    }
+  });
+
+  renderCart();
+</script>
